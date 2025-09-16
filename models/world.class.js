@@ -1,7 +1,15 @@
 class World {
   character = new Character(); 
   enemies = [new Chicken(), new Chicken(), new Chicken()];
-  clouds= new Cloud();
+  clouds= [
+    new Cloud()
+  ];
+  backgroundObjects = [
+    new BackgroundObject("../img/5_background/layers/air.png", 0, 0),
+    new BackgroundObject("../img/5_background/layers/3_third_layer/1.png", 0),
+    new BackgroundObject("../img/5_background/layers/2_second_layer/1.png", 0),
+    new BackgroundObject("../img/5_background/layers/1_first_layer/1.png", 0)    
+  ];
   ctx;
   canvas;
 
@@ -11,21 +19,28 @@ class World {
     this.draw();
   }
 
-
-
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); //cleart the canvas
 
-    this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-    for (let i = 0; i < this.enemies.length; i++) {
-      this.ctx.drawImage(this.enemies[i].img, this.enemies[i].x, this.enemies[i].y, this.enemies[i].width, this.enemies[i].height);
-    }
-    this.ctx.drawImage(this.clouds.img, this.clouds.x, this.clouds.y, this.clouds.width, this.clouds.height);
-
+    this.addObjectsToMap(this.backgroundObjects);
+    this.addToMap(this.character);
+    this.addObjectsToMap(this.enemies);
+    this.addObjectsToMap(this.clouds);
+        
     //draw() wird immer wieder aufgerufen
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
      });
+  }
+
+  addObjectsToMap(objects) {
+    objects.forEach(o => {
+      this.addToMap(o);
+    });    
+  }
+
+  addToMap(mo) {
+    this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
   }
 }
