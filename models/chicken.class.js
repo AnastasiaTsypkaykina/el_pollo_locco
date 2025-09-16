@@ -5,5 +5,11 @@ class Chicken extends MovableObject {
         this.height=100;
         this.width=70;
         this.y=340;
-    }    
-}
+        //this.animate();
+    }
+    
+//     animate(){
+//         setInterval(() => {
+//             this.x -= 0.06;            
+//         }, 1000 / 60);}  
+ }
