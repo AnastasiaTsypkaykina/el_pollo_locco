@@ -12,16 +12,17 @@ class SmallChicken extends MovableObject {
         this.height=30;
         this.width=30;
         this.y=390;
+        this.speed=0.15+Math.random()*0.25;
         this.loadImages(this.IMAGES_WALKING);
         this.animate();
     }
-    animate(){        
-        setInterval(() => {
+    animate(){    
+        this.moveLeft();    
+        setInterval(() => {        
         let i = this.currentImage % this.IMAGES_WALKING.length;
         let path = this.IMAGES_WALKING[i];
         this.img = this.imageCache[path];
-        this.currentImage++;
-        this.x -= 0.9;
+        this.currentImage++;        
         }, 100);
 
     }
