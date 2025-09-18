@@ -1,59 +1,97 @@
 class MovableObject {
-    x=80;
-    y=200;
-    img;
-    height=230;
-    width=100; 
-    imageCache = {};
-    speed=0.15;
-    otherDirection = false;
-    speedY=0;
-    acceleration=2.5;
-    
-    applyGravity() {       
-        setInterval(()=>{
-            if (this.isAboveGround() || this.speedY >0){
-            this.y -= this.speedY;
-            this.speedY -= this.acceleration;
-            }
-        }, 50);
+  x = 80;
+  y = 200;
+  img;
+  height = 230;
+  width = 100;
+  imageCache = {};
+  speed = 0.15;
+  otherDirection = false;
+  speedY = 0;
+  acceleration = 2.5;
+  energy = 100;
+
+  applyGravity() {
+    setInterval(() => {
+      if (this.isAboveGround() || this.speedY > 0) {
+        this.y -= this.speedY;
+        this.speedY -= this.acceleration;
+      }
+    }, 50);
+  }
+
+  isAboveGround() {
+    return this.y < 200;
+  }
+
+  draw(ctx) {
+    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+  }
+
+  drawFrame(ctx) {
+    if (
+      this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof SmallChicken ||
+      this instanceof Endboss
+    ) {
+      ctx.beginPath();
+      ctx.lineWidth = "5";
+      ctx.strokeStyle = "blue";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
     }
+  }
 
-    isAboveGround() {
-        return this.y < 200;
+  isColliding(mo) {
+    return (
+      this.x + this.width > mo.x &&
+      this.y + this.height > mo.y &&
+      this.x < mo.x &&
+      this.y < mo.y + mo.height
+    );
+  }
+
+  hit() {
+    this.energy -= 2;
+    if (this.energy < 0) {
+        this.energy = 0;
     }
-    
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
+  }
 
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path]=img;
-        });
-    }
+  isDead() {
+    return this.energy == 0;
+  }
 
-    moveRight() {
-        setInterval(() => {
-            this.x += this.speed;            
-        }, 1000 / 60);        
-     }
+  loadImage(path) {
+    this.img = new Image();
+    this.img.src = path;
+  }
 
-     moveLeft() {        
-         setInterval(() => {
-            this.x -= this.speed;            
-        }, 1000 / 60);
-     }
+  loadImages(arr) {
+    arr.forEach((path) => {
+      let img = new Image();
+      img.src = path;
+      this.imageCache[path] = img;
+    });
+  }
 
-     playAnimation(images) {        
-        let i = this.currentImage % images.length;
-        let path = images[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;        
-        
-     }
-     
+  moveRight() {
+    setInterval(() => {
+      this.x += this.speed;
+    }, 1000 / 60);
+  }
+
+  moveLeft() {
+    setInterval(() => {
+      this.x -= this.speed;
+    }, 1000 / 60);
+  }
+
+  playAnimation(images) {
+    let i = this.currentImage % images.length;
+    let path = images[i];
+    this.img = this.imageCache[path];
+    this.currentImage++;
+  }
 }
