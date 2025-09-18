@@ -16,6 +16,7 @@ class Character extends MovableObject {
     super.loadImage("./img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_WALKING);
     this.animate();
+    this.jump();
   }
 
   animate() {
@@ -43,5 +44,18 @@ class Character extends MovableObject {
     }, 50);
   }
 
-  jump() {}
+  jump() {
+    setInterval(() => {
+        if (this.world.keyboard.UP) {
+            this.y -= 5;            
+        }
+
+         if (this.world.keyboard.DOWN && this.y <200) {
+            this.y += 5;
+            
+        }
+        
+    }, 1000/60);    
+
+  }
 }
