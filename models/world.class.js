@@ -1,6 +1,6 @@
 class World {
   character = new Character();
-  level=level1;
+  level = level1;
   enemies = level1.enemies;
   clouds = level1.clouds;
   backgroundObjects = level1.backgroundObjects;
@@ -8,6 +8,7 @@ class World {
   canvas;
   keyboard;
   camera_x = 0;
+  statusBar = new Statusbar();
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -26,9 +27,9 @@ class World {
     setInterval(() => {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
-          this.character.hit();          
+          this.character.hit();
         }
-      })
+      });
     }, 200);
   }
 
@@ -37,6 +38,7 @@ class World {
 
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.backgroundObjects);
+    this.addToMap(this.statusBar);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
     this.addObjectsToMap(this.clouds);
@@ -78,6 +80,4 @@ class World {
     this.ctx.restore();
     mo.x = mo.x * -1;
   }
-
- 
 }

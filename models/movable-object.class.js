@@ -1,15 +1,10 @@
-class MovableObject {
-  x = 80;
-  y = 200;
-  img;
-  height = 230;
-  width = 100;
-  imageCache = {};
+class MovableObject extends DrawableObject {
   speed = 0.15;
   otherDirection = false;
   speedY = 0;
   acceleration = 2.5;
   energy = 100;
+  lasthit = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -24,25 +19,6 @@ class MovableObject {
     return this.y < 200;
   }
 
-  draw(ctx) {
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  }
-
-  drawFrame(ctx) {
-    if (
-      this instanceof Character ||
-      this instanceof Chicken ||
-      this instanceof SmallChicken ||
-      this instanceof Endboss
-    ) {
-      ctx.beginPath();
-      ctx.lineWidth = "5";
-      ctx.strokeStyle = "blue";
-      ctx.rect(this.x, this.y, this.width, this.height);
-      ctx.stroke();
-    }
-  }
-
   isColliding(mo) {
     return (
       this.x + this.width > mo.x &&
@@ -53,9 +29,11 @@ class MovableObject {
   }
 
   hit() {
-    this.energy -= 2;
+    this.energy -= 5;
     if (this.energy < 0) {
-        this.energy = 0;
+      this.energy = 0;
+    } else {
+      this.lasthit = new Date().getTime();
     }
   }
 
@@ -63,17 +41,10 @@ class MovableObject {
     return this.energy == 0;
   }
 
-  loadImage(path) {
-    this.img = new Image();
-    this.img.src = path;
-  }
-
-  loadImages(arr) {
-    arr.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageCache[path] = img;
-    });
+  isHurt() {
+    let timepassed = new Date().getTime() - this.lasthit;
+    timepassed = timepassed / 1000;
+    return timepassed < 1;
   }
 
   moveRight() {

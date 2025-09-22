@@ -29,11 +29,15 @@ class Character extends MovableObject {
     "./img/2_character_pepe/5_dead/D-56.png",
     "./img/2_character_pepe/5_dead/D-57.png",
   ];
+
+  IMAGES_HURT = [
+    "./img/2_character_pepe/4_hurt/H-41.png",
+    "./img/2_character_pepe/4_hurt/H-42.png",
+    "./img/2_character_pepe/4_hurt/H-43.png",
+  ];
   currentImage = 0;
   world;
   speed = 10;
-
-  
 
   constructor(x, y, img) {
     super(x);
@@ -42,6 +46,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_HURT);
     this.animate();
     this.applyGravity();
     this.isAboveGround();
@@ -49,12 +54,12 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
-      if (this.world.keyboard.RIGHT && this.x < 2000 && !this.isAboveGround()) {
+      if (this.world.keyboard.RIGHT && this.x < 2000) {
         this.x += this.speed;
         this.otherDirection = false;
       }
 
-      if (this.world.keyboard.LEFT && this.x > 0 && !this.isAboveGround()) {
+      if (this.world.keyboard.LEFT && this.x > 0) {
         this.x -= this.speed;
         this.otherDirection = true;
       }
@@ -69,8 +74,9 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD);
-      }
-      if (this.isAboveGround()) {
+      } else if (this.isHurt()) {
+        this.playAnimation(this.IMAGES_HURT);
+      } else if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
       } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.IMAGES_WALKING);
