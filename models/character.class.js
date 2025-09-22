@@ -35,6 +35,7 @@ class Character extends MovableObject {
     "./img/2_character_pepe/4_hurt/H-42.png",
     "./img/2_character_pepe/4_hurt/H-43.png",
   ];
+  IMAGE_END = ["./img/9_intro_outro_screens/game_over/game over.png"];
   currentImage = 0;
   world;
   speed = 10;
@@ -47,6 +48,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_HURT);
+    this.loadImages(this.IMAGE_END);
     this.animate();
     this.applyGravity();
     this.isAboveGround();
@@ -74,7 +76,8 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD);
-      } else if (this.isHurt()) {
+      }
+      if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
       } else if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
@@ -82,7 +85,6 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_WALKING);
       }
     }, 100);
+     
   }
-
-  jump() {}
 }
