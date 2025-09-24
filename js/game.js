@@ -5,6 +5,7 @@ let keyboard = new Keyboard();
 bottlesCollectedInMenu = 0;
 
 function init() {
+    gameSounds();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     

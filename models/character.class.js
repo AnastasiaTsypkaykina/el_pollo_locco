@@ -36,6 +36,7 @@ class Character extends MovableObject {
     "./img/2_character_pepe/4_hurt/H-43.png",
   ];
   IMAGE_END = ["./img/9_intro_outro_screens/game_over/game over.png"];
+  walkingSound = new Audio('audio/walking_on_sand.mp3');
   currentImage = 0;
   world;
   speed = 10;
@@ -76,11 +77,14 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD);
+        characterDeadSound.play();
       }
       if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
+        characterHurtSound.play();
       } else if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
+        characterJumpSound.play();
       } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.IMAGES_WALKING);
       }

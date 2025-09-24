@@ -45,6 +45,7 @@ class World {
   checkCollisionBottle() {
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) {
+        collectBottleSound.play();
         this.bottleCollected(bottle);
       }
     });
