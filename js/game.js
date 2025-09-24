@@ -2,10 +2,16 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
+bottlesCollectedInMenu = 0;
+
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     
+}
+
+function checkCollectedBottles() {
+    bottlesCollectedInMenu++;
 }
 
 //falls ich eine Taste drucke, bekomme ich ein Array zurück

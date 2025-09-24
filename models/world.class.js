@@ -3,12 +3,14 @@ class World {
   level = level1;
   enemies = level1.enemies;
   clouds = level1.clouds;
+  bottles = level1.bottles;
   backgroundObjects = level1.backgroundObjects;
   ctx;
   canvas;
   keyboard;
   camera_x = 0;
   statusBar = new Statusbar();
+  collectedBottles = 0;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -16,22 +18,43 @@ class World {
     this.draw();
     this.keyboard = keyboard;
     this.setWorld();
-    this.checkCollisions();
+    this.checkCollision();
+    this.run();
   }
 
   setWorld() {
     this.character.world = this;
   }
 
-  checkCollisions() {
+  run() {
     setInterval(() => {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-        }
-      });
+      this.checkCollision();
+      this.checkCollisionBottle();
     }, 200);
+  }
+
+  checkCollision() {
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
+      }
+    });
+  }
+
+  checkCollisionBottle() {
+    this.level.bottles.forEach((bottle) => {
+      if (this.character.isColliding(bottle)) {
+        this.bottleCollected(bottle);
+      }
+    });
+  }
+
+  bottleCollected(bottle) {
+    checkCollectedBottles();
+    this.collectedBottles++;
+    let i = this.level.bottles.indexOf(bottle);
+    this.level.bottles.splice(i, 1);
   }
 
   draw() {
@@ -45,6 +68,7 @@ class World {
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
     this.addObjectsToMap(this.clouds);
+    this.addObjectsToMap(this.bottles);
     this.ctx.translate(-this.camera_x, 0);
 
     //draw() wird immer wieder aufgerufen

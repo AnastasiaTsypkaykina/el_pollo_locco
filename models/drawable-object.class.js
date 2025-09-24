@@ -29,8 +29,8 @@ class DrawableObject {
       this instanceof Character ||
       this instanceof Chicken ||
       this instanceof SmallChicken ||
-      this instanceof Endboss
-    ) {
+      this instanceof Endboss 
+     ) {
       ctx.beginPath();
       ctx.lineWidth = "5";
       ctx.strokeStyle = "blue";
