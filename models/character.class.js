@@ -36,7 +36,7 @@ class Character extends MovableObject {
     "./img/2_character_pepe/4_hurt/H-43.png",
   ];
   IMAGE_END = ["./img/9_intro_outro_screens/game_over/game over.png"];
-  walkingSound = new Audio('audio/walking_on_sand.mp3');
+  walkingSound = new Audio("./audio/character_walk.mp4");
   currentImage = 0;
   world;
   speed = 10;
@@ -60,11 +60,13 @@ class Character extends MovableObject {
       if (this.world.keyboard.RIGHT && this.x < 2000) {
         this.x += this.speed;
         this.otherDirection = false;
+        
       }
 
       if (this.world.keyboard.LEFT && this.x > 0) {
         this.x -= this.speed;
         this.otherDirection = true;
+        
       }
 
       if (this.world.keyboard.UP && !this.isAboveGround()) {
@@ -87,6 +89,7 @@ class Character extends MovableObject {
         characterJumpSound.play();
       } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.IMAGES_WALKING);
+        this.walkingSound.play();
       }
     }, 100);
      
