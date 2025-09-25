@@ -3,13 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./img/2_character_pepe/1_idle/idle/I-1.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./style.css" />
     <title>El Pollo Locco</title>
   </head>
-  <body onload="init()">
-    <h1>El Pollo Locco</h1>
+  <body onload="">
+    
+    <div class="fullscreen">
+      <div id="start-screen" class="overlay start-screen">
+        <div class="panel">
+          <button onclick="startGame()" class="btn">Start</button>
+        </div>
+      </div>
 
-    <canvas id="canvas" width="720" height="480"> </canvas>
+      <canvas id="canvas" class = "d-none"width="720" height="480"> </canvas>
+
+      <div id="overlay" class="overlay d-none">
+        <!-- Won screen -->
+        <div id="won-screen" class="overlay won-screen d-none">
+          <div class="panel">
+            <button onclick="startGame()" class="btn">Restart</button>
+            <button
+              onclick="goToMainMenu('won-screen', 'canvas', 'start-screen')"
+              class="btn"
+            >
+              Main Menu
+            </button>
+          </div>
+        </div>
+
+        <!-- Lost screen -->
+        <div id="lost-screen" class="overlay lost-screen d-none">
+          <div class="panel">
+            <button onclick="startGame()" class="btn">Restart</button>
+            <button
+              onclick="goToMainMenu('lost-screen', 'canvas', 'start-screen')"
+              class="btn"
+            >
+              Main Menu
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 
   <script src="./models/drawable-object.class.js"></script>
@@ -24,7 +64,7 @@
   <script src="./models/background-object.class.js"></script>
   <script src="./models/keyboard.class.js"></script>
   <script src="./models/level.class.js"></script>
-  <script src="./models/endboss.class.js"></script>  
+  <script src="./models/endboss.class.js"></script>
   <script src="./levels/level1.js"></script>
   <script src="./js/game-sound.js"></script>
   <script src="./js/game.js"></script>
