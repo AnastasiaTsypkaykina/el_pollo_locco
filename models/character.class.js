@@ -80,6 +80,8 @@ class Character extends MovableObject {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD);
         characterDeadSound.play();
+        setGameSoundsToNull();
+        gameLost();        
       }
       if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
@@ -94,4 +96,5 @@ class Character extends MovableObject {
     }, 100);
      
   }
+
 }

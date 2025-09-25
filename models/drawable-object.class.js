@@ -38,4 +38,36 @@ class DrawableObject {
       ctx.stroke();
     }
   }
+
+    resolveImageIndexCollectableObjects() {
+        if (this.collected == 0) {
+            return 0;
+        } else if (this.collected == 1) {
+            return 1;
+        } else if (this.collected == 2) {
+            return 2;
+        } else if (this.collected == 3) {
+            return 3;
+        } else if (this.collected == 4) {
+            return 4;
+        } else {
+            return 5;
+        }
+    }
+   
+    resolveImageIndexHealth() {
+        if (this.percentage == 100) {
+            return 5;
+        } else if (this.percentage > 80) {
+            return 4;
+        } else if (this.percentage > 60) {
+            return 3;
+        } else if (this.percentage > 40) {
+            return 2;
+        } else if (this.percentage > 20) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

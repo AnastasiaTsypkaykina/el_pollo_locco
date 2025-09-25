@@ -10,16 +10,19 @@ class World {
   keyboard;
   camera_x = 0;
   statusBar = new Statusbar();
+  bottleBar = new BottleBar();
   collectedBottles = 0;
+  throwableObjects = [];
+  
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.draw();
     this.keyboard = keyboard;
-    this.setWorld();
-    this.checkCollision();
+    this.setWorld();    
     this.run();
+    this.runBottles();
   }
 
   setWorld() {
@@ -32,6 +35,12 @@ class World {
       this.checkCollisionBottle();
     }, 200);
   }
+
+  runBottles() {
+        setStoppableInterval(() => {
+            this.checkThrowObject();
+        }, 200);
+    }
 
   checkCollision() {
     this.level.enemies.forEach((enemy) => {
@@ -47,9 +56,47 @@ class World {
       if (this.character.isColliding(bottle)) {
         collectBottleSound.play();
         this.bottleCollected(bottle);
+        this.increaseBottleBar();
       }
     });
   }
+
+  checkThrowObject() {
+       if (this.keyboard.d && this.collectedBottles > 0) {
+            this.throwBottle();
+            this.reduceBottleBar();           
+       }
+    }
+
+    reduceBottleBar() {
+        this.bottleBar.collected--;
+        this.bottleBar.setCollected(this.bottleBar.collected);
+    }
+
+      throwBottle() {
+        this.collectedBottles--;
+        checkThrowedBottles();
+        if (this.character.otherDirection) {
+            this.bottleThrowLeft();
+        } else {
+            this.bottleThrowRight();
+        }
+    }
+
+    bottleThrowLeft() {
+        let bottle = new ThrowableObject(this.character.posX - 20, this.character.posY + 100, this.character.otherDirection);
+        this.throwableObjects.push(bottle);
+    }
+
+     bottleThrowRight() {
+        let bottle = new ThrowableObject(this.character.posX + 20, this.character.posY + 100, this.character.otherDirection);
+        this.throwableObjects.push(bottle);
+    }
+
+      increaseBottleBar() {
+        this.bottleBar.collected++;
+        this.bottleBar.setCollected(this.bottleBar.collected);
+    }
 
   bottleCollected(bottle) {
     checkCollectedBottles();
@@ -63,12 +110,14 @@ class World {
 
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.backgroundObjects);
+    this.addObjectsToMap(this.clouds);
     this.ctx.translate(-this.camera_x, 0);
     this.addToMap(this.statusBar);
+    this.addToMap(this.bottleBar);
     this.ctx.translate(this.camera_x, 0);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
-    this.addObjectsToMap(this.clouds);
+    
     this.addObjectsToMap(this.bottles);
     this.ctx.translate(-this.camera_x, 0);
 

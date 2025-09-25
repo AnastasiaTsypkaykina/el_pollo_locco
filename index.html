@@ -12,7 +12,6 @@
     <title>El Pollo Locco</title>
   </head>
   <body onload="">
-    
     <div class="fullscreen">
       <div id="start-screen" class="overlay start-screen">
         <div class="panel">
@@ -20,52 +19,46 @@
         </div>
       </div>
 
-      <canvas id="canvas" class = "d-none"width="720" height="480"> </canvas>
+      <canvas id="canvas" class="d-none" width="720" height="480"> </canvas>
 
       <div id="overlay" class="overlay d-none">
-        <!-- Won screen -->
-        <div id="won-screen" class="overlay won-screen d-none">
-          <div class="panel">
-            <button onclick="startGame()" class="btn">Restart</button>
-            <button
-              onclick="goToMainMenu('won-screen', 'canvas', 'start-screen')"
-              class="btn"
-            >
-              Main Menu
-            </button>
-          </div>
+        <!-- here panel of controls&buttons -->
+      </div>
+      <!-- Won screen -->
+      <div id="won-screen" class="overlay won-screen d-none">
+        <div class="panel">
+          <button onclick="startGame()" class="btn">Restart</button>
         </div>
+      </div>
 
-        <!-- Lost screen -->
-        <div id="lost-screen" class="overlay lost-screen d-none">
-          <div class="panel">
-            <button onclick="startGame()" class="btn">Restart</button>
-            <button
-              onclick="goToMainMenu('lost-screen', 'canvas', 'start-screen')"
-              class="btn"
-            >
-              Main Menu
-            </button>
-          </div>
+      <!-- Lost screen -->
+      <div id="lost-screen" class="overlay lost-screen d-none">
+        <div class="panel">
+          <button onclick="startGame()" class="btn">Restart</button>
         </div>
       </div>
     </div>
   </body>
 
-  <script src="./models/drawable-object.class.js"></script>
-  <script src="./models/movable-object.class.js"></script>
-  <script src="./models/statusbar.class.js"></script>
-  <script src="./models/chicken.class.js"></script>
-  <script src="./models/chicken-small.class.js"></script>
-  <script src="./models/character.class.js"></script>
-  <script src="./models/cloud.class.js"></script>
-  <script src="./models/bottle.class.js"></script>
-  <script src="./models/world.class.js"></script>
-  <script src="./models/background-object.class.js"></script>
-  <script src="./models/keyboard.class.js"></script>
-  <script src="./models/level.class.js"></script>
-  <script src="./models/endboss.class.js"></script>
-  <script src="./levels/level1.js"></script>
-  <script src="./js/game-sound.js"></script>
-  <script src="./js/game.js"></script>
+  <script src="models/drawable-object.class.js"></script>
+  <script src="models/movable-object.class.js"></script>
+  <script src="models/statusbar.class.js"></script>
+  
+  <script src="models/statusbar-bottles.class.js"></script>
+  
+  <script src="models/character.class.js"></script>
+  <script src="models/chicken-small.class.js"></script>
+  <script src="models/chicken.class.js"></script>
+  
+  <script src="models/bottle.class.js"></script>
+  <script src="models/cloud.class.js"></script>
+  <script src="models/background-object.class.js"></script>
+  <script src="models/keyboard.class.js"></script>
+  <script src="models/throwable-object.class.js"></script>
+  <script src="models/level.class.js"></script>
+  <script src="models/endboss.class.js"></script>
+  <script src="levels/level1.js"></script>
+  <script src="models/world.class.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/game-sound.js"></script>
 </html>

@@ -5,10 +5,13 @@ characterHurtSound = new Audio('./audio/character_hurt.mp3');
 
 collectBottleSound = new Audio('./audio/bottle_collect.mp3');
 
+backgroundSound = new Audio("./audio/background_sound.mp3");
+
 characterDeadSound.load();
 characterHurtSound.load();
 characterJumpSound.load();
 collectBottleSound.load();
+backgroundSound.load();
 
 
 let gameMusicOff = false;
@@ -20,7 +23,9 @@ let gameMusicOff = false;
  */
 function gameSounds() {
     resetSoundsToBegin();
-    checkGameMusic();      
+    checkGameMusic(); 
+    backgroundSound.loop = true;
+    backgroundSound.play();     
 }
 
 
@@ -28,6 +33,7 @@ function gameSounds() {
  * Reset the time of 'game' + 'endboss' sounds
  */
 function resetSoundsToBegin() {
+    backgroundSound.currentTime = 0;
     
 }
 
@@ -65,7 +71,8 @@ function allSoundsVolumeOff() {
     characterDeadSound.volume = 0;
     characterHurtSound.volume = 0;
 
-    collectBottleSound.volume = 0;    
+    collectBottleSound.volume = 0;
+    backgroundSound.volume = 0;    
 }
 
 
@@ -87,6 +94,7 @@ function allSoundsVolumeOn() {
     characterHurtSound.volume = 1;
     
     collectBottleSound.volume = 1;
+    backgroundSound.volume = 1;
     
 }
 
@@ -102,6 +110,7 @@ function setGameSoundsToNull() {
         characterHurtSound.value = 1;       
         
         collectBottleSound.value = 1;
+        backgroundSound.value = 1;
         
     }, 300);
 }

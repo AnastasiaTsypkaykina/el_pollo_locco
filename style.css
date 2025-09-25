@@ -164,16 +164,17 @@ body {
     width: 720px;
     height: 480px;
     /* Other */
-    background-image: url('./img/9_intro_outro_screens/game_over/game over.png');
+    background-image: url('./img/You won, you lost/Game Over.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-size: cover;    
     border-radius: 6px;
 }
 
 .lost-screen {
     /* Other */
-    background-image: url('./img/9_intro_outro_screens/game_over/you lost.png');
+    background-image: url('./img/You won, you lost/Game Over.png');
+    width: 720px;
+    height: 480px;
 }
 
 .won-screen {
