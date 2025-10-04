@@ -1,20 +1,20 @@
 /**
- * BottleBar class represents the status bar of the bottle object
+ * CoinBar class represents the status bar of the coin object
  * @extends StatusBar
  */
-class BottleBar extends Statusbar {
+class CoinBar extends Statusbar {
 
     statusbar_images = [
-        './img/7_statusbars/1_statusbar/3_statusbar_bottle/green/0.png',
-        './img/7_statusbars/1_statusbar/3_statusbar_bottle/green/20.png',
-        './img/7_statusbars/1_statusbar/3_statusbar_bottle/green/40.png',
-        './img/7_statusbars/1_statusbar/3_statusbar_bottle/green/60.png',
-        './img/7_statusbars/1_statusbar/3_statusbar_bottle/green/80.png',
-        './img/7_statusbars/1_statusbar/3_statusbar_bottle/green/100.png'  
+        './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/0.png',
+        './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/20.png',
+        './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/40.png',
+        './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/60.png',
+        './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/80.png',
+        './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/100.png'
     ];
 
     collected = 0;
-    
+
 
     /**
      * Initializes the status bar of the bottle object
@@ -26,7 +26,7 @@ class BottleBar extends Statusbar {
         this.loadImages(this.statusbar_images);
         this.setCollected(0);
         this.posX = 20;
-        this.posY = 55;
+        this.posY = 100;
         this.width = 180;
         this.height = 50;
     }
@@ -35,7 +35,7 @@ class BottleBar extends Statusbar {
     /**
      * Updates the collected property of the status bar object
      * -> Changes displayed image according to collected amount
-     * @param {number} collected -> Amount of bottles
+     * @param {number} collected -> Amount of coins
      */
     setCollected(collected) {
         this.collected = collected;

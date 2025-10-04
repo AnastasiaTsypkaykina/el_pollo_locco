@@ -3,13 +3,37 @@ characterJumpSound = new Audio('./audio/character_jump.mp3');
 characterDeadSound = new Audio('./audio/character_dead.mp3');
 characterHurtSound = new Audio('./audio/character_hurt.mp3');
 
+chickenDeadSound = new Audio('./audio/chicken_dead_sound.mp3');
+
 collectBottleSound = new Audio('./audio/bottle_collect.mp3');
+throwBottleSound = new Audio('./audio/throw_bottle_sound.mp3');
+bottleSplashSound = new Audio('./audio/bottle_splash_sound.mp3');
+
+collectCoinSound = new Audio('./audio/collect_coin_sound.mp3');
+
+endbossHurtSound = new Audio('./audio/chicken_dead_sound.mp3');
+endbossAttentionSound = new Audio('./audio/chicken_dead_sound.mp3');
+endbossAttackSound = new Audio('./audio/chicken_dead_sound.mp3');
 
 backgroundSound = new Audio("./audio/background_sound.mp3");
+gameEndbossMusic = new Audio('./audio/endboss_attention_sound.mp3');
+
+gameWonSound = new Audio('./audio/game_won_sound.mp3');
+gameLostSound = new Audio('./audio/game_won_sound.mp3');
 
 characterDeadSound.load();
 characterHurtSound.load();
 characterJumpSound.load();
+chickenDeadSound.load();
+throwBottleSound.load();
+bottleSplashSound.load();
+collectCoinSound.load();
+endbossHurtSound.load();
+endbossAttentionSound.load();
+endbossAttackSound.load();
+gameEndbossMusic.load();
+gameWonSound.load();
+gameLostSound.load();
 collectBottleSound.load();
 backgroundSound.load();
 
@@ -58,6 +82,11 @@ function checkGameMusic() {
 function soundOff() {
     gameMusicOff = true;    
     allSoundsVolumeOff();
+}
+
+function showSoundOffButton() {
+    document.getElementById('sound-off').classList.add('d-none');
+    document.getElementById('sound-on').classList.remove('d-none');
 }
 
 

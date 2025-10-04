@@ -1,15 +1,11 @@
+/**
+ * Keyboard class
+ */
 class Keyboard {
-    LEFT=false;
-    RIGHT=false;
-    SPACE=false;
-    ENTER=false;
-    ESC=false;
-    UP=false;
-    DOWN=false;
-    D=false;
-
-    constructor() {
-
-    }
-
+    left = false;
+    right = false;
+    up = false;
+    down = false;
+    space = false;
+    d = false;
 }

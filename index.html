@@ -22,7 +22,33 @@
       <canvas id="canvas" class="d-none" width="720" height="480"> </canvas>
 
       <div id="overlay" class="overlay d-none">
-        <!-- here panel of controls&buttons -->
+        <div id="panel-sound" class="panel-sound">
+          <button onclick="soundOn()" id="sound-on" class="mobile-btn d-none">
+            <img src="./img/10_icons/volume_off_24px.svg" alt="volume on" />
+          </button>
+          <button onclick="soundOff()" id="sound-off" class="mobile-btn">
+            <img src="./img/10_icons/volume_up_24px.svg" alt="volume off" />
+          </button>
+        </div>
+
+        <div id="panel-controls" class="panel-control">
+          <div class="btns">
+            <button id="mobile-btn-move-left" class="mobile-btn">
+              <img src="./img/10_icons/arrow_left_24px.svg" alt="move left" />
+            </button>
+            <button id="mobile-btn-move-right" class="mobile-btn">
+              <img src="./img/10_icons/arrow_right_24px.svg" alt="move right" />
+            </button>
+          </div>
+          <div class="btns">
+            <button id="mobile-btn-jump" class="mobile-btn">
+              <img src="./img/10_icons/jump_24px.svg" alt="jump" />
+            </button>
+            <button id="mobile-btn-throw" class="mobile-btn">
+              <img src="./img/10_icons/liquor_24px.svg" alt="throw bottle" />
+            </button>
+          </div>
+        </div>
       </div>
       <!-- Won screen -->
       <div id="won-screen" class="overlay won-screen d-none">
@@ -38,27 +64,30 @@
         </div>
       </div>
     </div>
-  </body>
 
-  <script src="models/drawable-object.class.js"></script>
-  <script src="models/movable-object.class.js"></script>
-  <script src="models/statusbar.class.js"></script>
-  
-  <script src="models/statusbar-bottles.class.js"></script>
-  
-  <script src="models/character.class.js"></script>
-  <script src="models/chicken-small.class.js"></script>
-  <script src="models/chicken.class.js"></script>
-  
-  <script src="models/bottle.class.js"></script>
-  <script src="models/cloud.class.js"></script>
-  <script src="models/background-object.class.js"></script>
-  <script src="models/keyboard.class.js"></script>
-  <script src="models/throwable-object.class.js"></script>
-  <script src="models/level.class.js"></script>
-  <script src="models/endboss.class.js"></script>
-  <script src="levels/level1.js"></script>
-  <script src="models/world.class.js"></script>
-  <script src="js/game.js"></script>
-  <script src="js/game-sound.js"></script>
+    <script src="models/drawable-object.class.js"></script>
+    <script src="models/movable-object.class.js"></script>
+    <script src="models/statusbar.class.js"></script>
+
+    <script src="models/statusbar-bottles.class.js"></script>
+    <script src="models/statusbar-coins.class.js"></script>
+    <script src="models/statusbar-endboss.class.js"></script>
+
+    <script src="models/character.class.js"></script>
+    <script src="models/chicken-small.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+
+    <script src="models/coin.class.js"></script>
+    <script src="models/bottle.class.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/background-object.class.js"></script>
+    <script src="models/keyboard.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="levels/level1.js"></script>
+    <script src="models/world.class.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/game-sound.js"></script>
+  </body>
 </html>

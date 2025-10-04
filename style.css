@@ -1,31 +1,6 @@
-
-canvas {
-     /* Display & box model */
-    position: absolute;
-    display: block;
-    /* Other */
-    border: 2px solid #994409;
-    border-radius: 8px;
-}
-
-.manual-screen {
-    /* Display & box model */
-    z-index: 1;
-    justify-content: flex-start !important;
-    gap: 16px;
-    /* Other */    
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 6px;
-}
-
-.keys {
-    /* Display & box model */
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    padding: 0 32px 0 32px;
-}
+/* ==========================================================================
+   Reset all
+   ========================================================================== */
 
 * {
     box-sizing: border-box;
@@ -41,13 +16,21 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    /* Other */   
-    background-image: url('img/5_background/first_half_background.png');
+    /* Other */
+    background-image: url('./img/5_background/first_half_background.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     font-family: 'zabras', Arial, Helvetica, sans-serif;
 }
+
+
+/* ==========================================================================
+   Basic layout
+   ========================================================================== */
+
+/* Fullscreen
+   ========================================================================== */
 
 .fullscreen {
     /* Display & box model */
@@ -60,6 +43,18 @@ body {
     height: 100%;
 }
 
+   
+/* Canvas / screens
+   ========================================================================== */
+
+canvas {
+    /* Display & box model */
+    position: absolute;
+    display: block;
+    /* Other */
+    border: 2px solid #994409;
+    border-radius: 8px;
+}
 
 .start-screen {
     /* Display & box model */
@@ -77,6 +72,28 @@ body {
     border-radius: 6px;
 }
 
+.manual-screen {
+    /* Display & box model */
+    z-index: 1;
+    justify-content: flex-start !important;
+    gap: 16px;
+    /* Other */
+    background-image: url('./img/9_intro_outro_screens/game_over/keys.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 6px;
+}
+
+.keys {
+    /* Display & box model */
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 0 32px 0 32px;
+}
+
+
+
 .overlay {
     /* Display & box model */
     position: absolute;
@@ -86,6 +103,80 @@ body {
     align-items: flex-start;
     width: 720px;
     height: 480px;
+}
+
+.panel, 
+.panel-sound, 
+.panel-control,
+.panel-close,
+.panel-manual {
+    /* Display & box model */
+    display: flex;
+    width: 100%;
+    padding: 8px;
+    gap: 8px;
+}
+
+.panel {
+    /* Display & box model */
+    justify-content: center;
+}
+
+.panel-sound,
+.panel-close,
+.panel-manual {
+    /* Display & box model */
+    justify-content: flex-end;
+}
+
+.panel-control {
+    /* Display & box model */
+    justify-content: space-between;
+}
+
+.mobile-screen {
+    /* Display & box model */
+    display: none;
+}
+
+
+/* Controls
+   ========================================================================== */
+
+.controls {
+    /* Display & box model */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 16px;
+    width: 720px;
+    /* Other */
+    background-color: rgba(247, 192, 101, 0.6);
+    border: 2px solid #994409;
+    border-radius: 8px;
+}
+
+.control-container {
+    /* Display & box model */
+    position: absolute;
+    bottom: 30%;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.control {
+    /* Display & box model */
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    /* Other*/
+    border-radius: 8px;
 }
 
 .btns {
@@ -125,35 +216,9 @@ body {
     background-color: rgba(247, 192, 101);
 }
 
-.panel, 
-.panel-sound, 
-.panel-control,
-.panel-close,
-.panel-manual {
-    /* Display & box model */
-    display: flex;
-    width: 100%;
-    padding: 8px;
-    gap: 8px;
-}
 
-.panel {
-    /* Display & box model */
-    justify-content: center;
-}
-
-.panel-sound,
-.panel-close,
-.panel-manual {
-    /* Display & box model */
-    justify-content: flex-end;
-}
-
-.panel-control {
-    /* Display & box model */
-    justify-content: space-between;
-}
-
+/* Game won/lost
+   ========================================================================== */
 .won-screen,
 .lost-screen {
     /* Display & box model */
@@ -164,24 +229,179 @@ body {
     width: 720px;
     height: 480px;
     /* Other */
-    background-image: url('./img/You won, you lost/Game Over.png');
+    background-image: url('./img/9_intro_outro_screens/game_over/game over.png');
     background-repeat: no-repeat;
-    background-size: cover;    
+    background-size: cover;
+    background-position: center;
     border-radius: 6px;
-}
-
-.lost-screen {
-    /* Other */
-    background-image: url('./img/You won, you lost/Game Over.png');
-    width: 720px;
-    height: 480px;
 }
 
 .won-screen {
     background-image: url('./img/You won, you lost/You won A.png');
+
+}
+
+.lost-screen {
+    /* Other */
+    background-image: url('./img/9_intro_outro_screens/game_over/you lost.png');
+}
+
+
+/* Styles
+   ========================================================================== */
+.box-shadow-6 {
+    /* Other */
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.column-24px {
+    /* Display & box model */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 24px;
+}
+
+.icon-description {
+    /* Display & box model */
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding-right: 48px;
 }
 
 .d-none {
     /* Other */
     display: none;
 }
+
+.icon-48x48 {
+    /* Display & box model */
+    height: 48px;
+    width: 48px;
+}
+
+.icon-24x24 {
+    /* Display & box model */
+    height: 24px;
+    width: 24px;
+}
+
+.padding-32px {
+    /* Display & box model */
+    padding: 0 32px 32px 32px;
+}
+
+
+@media only screen and (min-width: 667px) 
+                   and (orientation: landscape)
+                   and (hover: none)
+                   and (pointer: coarse){
+    .canvas {
+        /* Display & box model */
+        height: 100%;
+        width: 100%;
+    }
+
+    .overlay {
+        /* Display & box model */
+        height: 100%;
+        width: 100%;
+    }
+
+    .start-screen {
+        /* Display & box model */
+        height: 100%;
+        width: 100%;
+    }
+
+    .manual-screen {
+        /* Display & box model */
+        height: 100%;
+        width: 100%;
+    }
+
+    .won-screen,
+    .lost-screen {
+        /* Display & box model */
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 720px) and (orientation: portrait) {
+    .fullscreen {
+        /* Display & box model */
+        display: none;
+    }
+
+    .canvas {
+        height: 100%;
+        width: 100%;
+    }
+
+    .fullscreen {
+        /* Display & box model */
+        display: none;
+    }
+
+    .mobile-screen {
+        /* Display & box model */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 32px;
+        gap: 16px;
+        height: 100%;
+        width: 100%;
+        /* Other */
+        background-color: rgba(247, 192, 101, 0.6);
+    }
+}
+
+
+@media only screen and (min-width: 720px) and (orientation: landscape) {
+    .panel-control {
+        display: none;
+    } 
+}
+
+
+@media only screen and (min-width: 720px) and (orientation: portrait) {
+    .panel-control {
+        display: none;
+    } 
+}
+
+
+@media only screen and (max-width: 480px) {
+    .canvas {
+        width: 100vh;
+    }
+}
+
+
+/* Fonts
+   ========================================================================== */
+h4 {
+    font-family: 'zabras';
+    font-size: 36px;
+    color: #994409;
+}
+
+p, .btn {
+    font-family: 'zabras';
+    font-size: 24px;
+    color: #994409;
+}
+
+
+@font-face {
+    font-family: 'zabras';
+    src: url(./fonts/Zabars.ttf) format('truetype');
+}
+
