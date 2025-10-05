@@ -17,6 +17,19 @@
         <div class="panel">
           <button onclick="startGame()" class="btn">Start</button>
         </div>
+        <div class="panel-manual">
+          <button onclick="showKeysManual()" class="mobile-btn">
+            <img src="./img/10_icons/tune_24px.png" alt="manual" />
+          </button>
+        </div>
+      </div>
+
+      <div id="manual-screen" class="overlay manual-screen d-none">
+        <div class="panel-close">
+          <button onclick="showStartScreen()" id="close-btn" class="mobile-btn">
+            <img src="./img/10_icons/close_24px.svg" alt="close" />
+          </button>
+        </div>
       </div>
 
       <canvas id="canvas" class="d-none" width="720" height="480"> </canvas>
@@ -54,6 +67,7 @@
       <div id="won-screen" class="overlay won-screen d-none">
         <div class="panel">
           <button onclick="startGame()" class="btn">Restart</button>
+          <button onclick="goToMainMenu('won-screen', 'canvas', 'start-screen')" class="btn">Main Menu</button>
         </div>
       </div>
 
@@ -61,6 +75,7 @@
       <div id="lost-screen" class="overlay lost-screen d-none">
         <div class="panel">
           <button onclick="startGame()" class="btn">Restart</button>
+          <button onclick="goToMainMenu('lost-screen', 'canvas', 'start-screen')" class="btn">Main Menu</button>
         </div>
       </div>
     </div>
