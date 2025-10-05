@@ -50,10 +50,6 @@ class Endboss extends MovableObject {
         './img/4_enemie_boss_chicken/5_dead/G26.png',
     ];
 
-
-    /**
-     * Initializes object and sets up it's behavior
-     */
     constructor() {
         super().loadImage(this.images_attention[0]);
         this.loadImages(this.images_attention);
@@ -66,14 +62,7 @@ class Endboss extends MovableObject {
         this.speed = 10;
         this.endbossAnimation();
     }
-
-
-    /**
-     * Uses 'endbossAnimation' to contol animation based on current state
-     * -> Checks if endboss is in various states like walking, attention, attack, hurt and dead
-     * -> Triggers the corresponding animation
-     * -> Interval is set to 120ms for smooth animation
-     */
+   
     endbossAnimation() {
 		setStoppableInterval(() => {
             if (this.arrivingEndboss()) {
@@ -90,20 +79,11 @@ class Endboss extends MovableObject {
             }
 		}, 120);
 	}
-
-
-    /**
-     * Checks if endboss is arrived
-     * @returns {boolean} -> 'true' = is arrived, 'false' = not arrived
-     */
+    
     arrivingEndboss() {
         return this.posX - world.character.posX <= 600 && !arrivedEndboss;
     }
 
-
-    /**
-     * Plays the attention animation + soundtrack
-     */
     endbossAttentionAnimation() {
         this.playAnimation(this.images_attention);
         endbossAttentionSound.play();
@@ -112,48 +92,27 @@ class Endboss extends MovableObject {
         }, 1500);
         this.endbossStartsWalking();
     }
-
-
-    /**
-     * Starts walking animation after timeout
-     */
+    
     endbossStartsWalking() {
         setTimeout(() => {
             arrivedEndboss = true;
         }, 1500);
     }
-
-
-    /**
-     * Checks if character is near to the endboss
-     * @returns {boolean} -> 'true' = near endboss, 'false' = not near endboss
-     */
+    
     characterIsNearEndboss() {
         return this.posX - world.character.posX < 30;
     }
-
-
-    /**
-     * Plays the attacking animation
-     */
+    
     endbossAttackingAnimation() {
         this.playAnimation(this.images_attack);
         endbossAttackSound.play();
     }
-
-
-    /**
-     * Plays the hurt animation
-     */
+   
     endbossIsHurtAnimation() {
         this.playAnimation(this.images_hurt);
         endbossHurtSound.play();
     }
 
-
-    /**
-     * Handles the death animation and related events for the endboss
-     */
     endbossIsDeadAnimation() {
         this.endbossDeadAndWinningSound();
         setGameSoundsToNull();
@@ -162,10 +121,6 @@ class Endboss extends MovableObject {
         this.stopGame();
     }
 
-
-    /**
-     * Stops game after delay
-     */
     stopGame() {
         setTimeout(() => {
             stopAllIntervals();
@@ -173,10 +128,6 @@ class Endboss extends MovableObject {
         }, 1500);
     }
 
-
-    /**
-     * Plays death animation + sound of endboss
-     */
     endbossDeadAndWinningSound() {
         this.playAnimation(this.images_dead);
         setTimeout(() => {
@@ -184,10 +135,6 @@ class Endboss extends MovableObject {
         }, 200);
     }
 
-
-    /**
-     * Moves endboss form canvas after death animation
-     */
     endbossDownFromCanvas() {
         setTimeout(() => {
             setStoppableInterval(() => {
@@ -196,19 +143,10 @@ class Endboss extends MovableObject {
         }, 500);
     }
 
-
-    /**
-     * Checks if endboss can walk
-     * @returns {boolean} -> 'true' = can walk, 'false' = can't walk
-     */
     endbossWalking() {
         return arrivedEndboss === true;
     }
 
-
-    /**
-     * Plays walking animation for the endboss
-     */
     endbossIsWalking() {
         this.playAnimation(this.images_walking);
         this.playEndbossMusic();
@@ -216,10 +154,6 @@ class Endboss extends MovableObject {
         this.otherDirection = false;
     }
 
-
-    /**
-     * Plays 'playsEndbossSound()' continuously in a loop 9 pauses gameBackgroundMusic
-     */
     playEndbossMusic() {
         gameEndbossMusic.loop = true;
         gameEndbossMusic.play();
