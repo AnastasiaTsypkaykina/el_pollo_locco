@@ -2,7 +2,7 @@ characterJumpSound = new Audio("./audio/character_jump.mp3");
 characterDeadSound = new Audio("./audio/character_dead.mp3");
 characterHurtSound = new Audio("./audio/character_hurt.mp3");
 
-chickenDeadSound = new Audio("./audio/chicken_dead_sound.mp3");
+chickenDeadSound = new Audio("./audio/chicken_dead_1.mp3");
 
 collectBottleSound = new Audio("./audio/bottle_collect.mp3");
 throwBottleSound = new Audio("./audio/throw_bottle_sound.mp3");
