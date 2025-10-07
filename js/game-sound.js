@@ -17,8 +17,8 @@ endbossAttackSound = new Audio("./audio/chicken_dead_sound.mp3");
 backgroundSound = new Audio("./audio/background_sound.mp3");
 gameEndbossMusic = new Audio("./audio/endboss_attention_sound.mp3");
 
-gameWonSound = new Audio("./audio/game_won_sound.mp3");
-gameLostSound = new Audio("./audio/game_won_sound.mp3");
+gameWonSound = new Audio("./audio/game_won_fin.mp3");
+gameLostSound = new Audio("./audio/game_lost.mp3");
 
 characterDeadSound.load();
 characterHurtSound.load();
