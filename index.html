@@ -12,6 +12,18 @@
     <title>El Pollo Locco</title>
   </head>
   <body onload="">
+    <div class="mobile-screen">
+      <img
+        class="icon-48x48"
+        src="./img/10_icons/screen_rotation_24px.svg"
+        alt="screen rotation"
+      />
+      <h4>Achtung</h4>
+      <p>
+        Wechseln Sie bitte in den Querformat, um es zu spielen.
+      </p>
+    </div>
+
     <div class="fullscreen">
       <div id="start-screen" class="overlay start-screen">
         <div class="panel">
@@ -32,7 +44,7 @@
         </div>
       </div>
 
-      <canvas id="canvas" class="d-none" width="720" height="480"> </canvas>
+      <canvas id="canvas" class="canvas box-shadow-6 d-none" width="720" height="480"> </canvas>
 
       <div id="overlay" class="overlay d-none">
         <div id="panel-sound" class="panel-sound">
@@ -67,7 +79,12 @@
       <div id="won-screen" class="overlay won-screen d-none">
         <div class="panel">
           <button onclick="startGame()" class="btn">Restart</button>
-          <button onclick="goToMainMenu('won-screen', 'canvas', 'start-screen')" class="btn"> Main Menu </button>
+          <button
+            onclick="goToMainMenu('won-screen', 'canvas', 'start-screen')"
+            class="btn"
+          >
+            Main Menu
+          </button>
         </div>
       </div>
 
@@ -75,7 +92,12 @@
       <div id="lost-screen" class="overlay lost-screen d-none">
         <div class="panel">
           <button onclick="startGame()" class="btn">Restart</button>
-          <button onclick="goToMainMenu('lost-screen', 'canvas', 'start-screen')" class="btn"> Main Menu </button>
+          <button
+            onclick="goToMainMenu('lost-screen', 'canvas', 'start-screen')"
+            class="btn"
+          >
+            Main Menu
+          </button>
         </div>
       </div>
     </div>

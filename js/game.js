@@ -12,10 +12,7 @@ let killedChickenInMenu = 0;
 
 function startGame() {
 	switchContainer('start-screen', 'canvas');
-	setTimeout(() => {
-		// switchContainer('start-screen', 'canvas');
-        // setEndgameStatisticToNull();
-        gameSounds();
+	setTimeout(() => {		
         initLevel();
 		mobileButtons();
 		document.getElementById('overlay').classList.remove('d-none');

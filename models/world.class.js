@@ -3,6 +3,7 @@ class World {
   level = level1;
   ctx;
   canvas;
+  
   keyboard;
   cameraPosX = 0;
   statusBar = new Statusbar();
@@ -18,6 +19,8 @@ class World {
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
+    // this.canvas.width=window.innerWidth;
+    // this.canvas.height =window.innerHeight;
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
