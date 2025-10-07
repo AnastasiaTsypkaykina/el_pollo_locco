@@ -77,7 +77,7 @@ canvas {
   justify-content: flex-start !important;
   gap: 16px;
   /* Other */
-  background-image: url("./img/9_intro_outro_screens/game_over/keys.png");
+  background-image: url("./img/9_intro_outro_screens/game_over/keys2.png");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 6px;
@@ -297,6 +297,7 @@ canvas {
   .overlay {
     /* Display & box model */
     height: 100%;
+    width: 100%
     
   }
 
