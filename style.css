@@ -163,6 +163,10 @@ canvas {
   transition: all 0.1s ease-in-out;
 }
 
+#sound-on, #sound-off {
+  z-index: 9999;
+}
+
 .impressum {
   text-decoration: none;
   font-family: "zabras";

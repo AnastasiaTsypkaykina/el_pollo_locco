@@ -170,7 +170,7 @@ function stopBackgroundMusic() {
 function showGameLostContainer() {
   setTimeout(() => {
     gameLostSound.play();
-    document.getElementById("lost-screen").classList.remove("d-none");
+    document.getElementById("lost-screen").classList.remove("d-none");    
   }, 500);
 }
 
@@ -187,7 +187,8 @@ function gameWon() {
  */
 function showGameWonContainer() {
   setTimeout(() => {
-    document.getElementById("won-screen").classList.remove("d-none");
+    gameWonSound.play();
+    document.getElementById("won-screen").classList.remove("d-none");   
   }, 1200);
 }
 
