@@ -43,6 +43,22 @@ backgroundSound.load();
 let gameMusicOff = false;
 
 /**
+ * Loads the sound setting from localStorage and applies it.
+ */
+function loadSoundSetting() {
+  const soundSetting = localStorage.getItem("gameMusicOff");
+  if (soundSetting === "true") {
+    gameMusicOff = true;
+    showSoundOffButton();
+    allSoundsVolumeOff();
+  } else {
+    gameMusicOff = false;
+    showSoundOnButton();
+    allSoundsVolumeOn();
+  }
+}
+
+/**
  * Initializes and plays the background music.
  * Resets sounds and checks if music should play.
  */
@@ -77,6 +93,7 @@ function checkGameMusic() {
  */
 function soundOff() {
   gameMusicOff = true;
+  localStorage.setItem("gameMusicOff", "true");
   showSoundOffButton();
   allSoundsVolumeOff();
 }
@@ -115,6 +132,7 @@ function allSoundsVolumeOff() {
  */
 function soundOn() {
   gameMusicOff = false;
+  localStorage.setItem("gameMusicOff", "false");
   showSoundOnButton();
   allSoundsVolumeOn();
 }
