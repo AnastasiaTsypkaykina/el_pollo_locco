@@ -163,7 +163,8 @@ canvas {
   transition: all 0.1s ease-in-out;
 }
 
-#sound-on, #sound-off {
+#sound-on,
+#sound-off {
   z-index: 9999;
 }
 
@@ -295,15 +296,15 @@ canvas {
   }
 }
 
-@media only screen and (min-width: 1000px) and (orientation: landscape) {
+@media (hover: none) and (orientation: landscape) {
   .panel-control {
-    display: none;
+    display: flex;
   }
 }
 
-@media only screen and (min-width: 720px) and (orientation: portrait) {
+@media (hover: none) and (orientation: portrait) {
   .panel-control {
-    display: none;
+    display: flex;
   }
 }
 

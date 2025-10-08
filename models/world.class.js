@@ -211,43 +211,33 @@ class World {
     this.bottleBar.setCollected(this.bottleBar.collected);
   }
 
-  /**
-   * Throws a bottle in the direction the character is facing.
-   */
-  throwBottle() {
-    this.collectedBottles--;
-    checkThrowedBottles();
-    if (this.character.otherDirection) {
-      this.bottleThrowLeft();
-    } else {
-      this.bottleThrowRight();
-    }
+   /**
+ * Throws a bottle in the direction the character is facing.
+ * If the character is facing left, the bottle is thrown to the left.
+ * If the character is facing right, the bottle is thrown to the right.
+ * Decreases the collected bottles count and adds the new bottle to the throwableObjects array.
+ */
+throwBottle() {
+  this.collectedBottles--;
+  checkThrowedBottles();
+  // Set offset for bottle spawn: left (-20) or right (+20)
+  let offsetX;
+  if (this.character.otherDirection) {
+    // Character is facing left
+    offsetX = -20;
+  } else {
+    // Character is facing right
+    offsetX = 20;
   }
 
-  /**
-   * Throws a bottle to the left.
-   */
-  bottleThrowLeft() {
-    let bottle = new ThrowableObject(
-      this.character.posX - 20,
-      this.character.posY + 100,
-      this.character.otherDirection
-    );
-    this.throwableObjects.push(bottle);
-  }
-
-  /**
-   * Throws a bottle to the right.
-   */
-  bottleThrowRight() {
-    let bottle = new ThrowableObject(
-      this.character.posX + 20,
-      this.character.posY + 100,
-      this.character.otherDirection
-    );
-    this.throwableObjects.push(bottle);
-  }
-
+  // Create and add the bottle
+  const bottle = new ThrowableObject(
+    this.character.posX + offsetX,
+    this.character.posY + 100,
+    this.character.otherDirection
+  );
+  this.throwableObjects.push(bottle);
+}
   /**
    * Checks collision between the character and bottles in the level.
    */
