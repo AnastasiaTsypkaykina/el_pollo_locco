@@ -1,10 +1,36 @@
+/**
+ * Represents the main character controlled by the player.
+ * Inherits from MovableObject.
+ *
+ * @class
+ * @extends MovableObject
+ * @property {number} posY - The vertical position of the character (default: 60).
+ * @property {number} height - The height of the character (default: 320).
+ * @property {number} width - The width of the character (default: 100).
+ * @property {number} speed - The movement speed of the character (default: 8).
+ * @property {number} longIdleState - Counter for long idle animation state.
+ * @property {Object} offset - The collision offset for the character.
+ * @property {number} offset.top
+ * @property {number} offset.bottom
+ * @property {number} offset.left
+ * @property {number} offset.right
+ * @property {string[]} images_walking - Array of image paths for walking animation.
+ * @property {string[]} images_jumping - Array of image paths for jumping animation.
+ * @property {string[]} images_dead - Array of image paths for dead animation.
+ * @property {string[]} images_hurt - Array of image paths for hurt animation.
+ * @property {string[]} images_idle - Array of image paths for idle animation.
+ * @property {string[]} images_long_idle - Array of image paths for long idle animation.
+ * @property {World} world - Reference to the game world.
+ * @property {HTMLAudioElement} walkingSound - Sound effect for walking.
+ *
+ * @constructor
+ */
 class Character extends MovableObject {
   posY = 60;
   height = 320;
   width = 100;
   speed = 8;
   longIdleState = 0;
-
   offset = {
     top: 50,
     bottom: 20,
@@ -78,6 +104,9 @@ class Character extends MovableObject {
   world;
   walkingSound = new Audio("./audio/walking_on_sand.mp3");
 
+  /**
+   * Creates a new Character instance, loads images, applies gravity, and starts animation.
+   */
   constructor() {
     super().loadImage("./img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.images_walking);
@@ -90,6 +119,9 @@ class Character extends MovableObject {
     this.animate();
   }
 
+  /**
+   * Starts the character's movement and animation intervals.
+   */
   animate() {
     setStoppableInterval(() => {
       if (
@@ -127,6 +159,9 @@ class Character extends MovableObject {
     }, 1000 / 12);
   }
 
+  /**
+   * Plays the death animation, sound, and triggers game over.
+   */
   deathAnimation() {
     this.playAnimation(this.images_dead);
     characterDeadSound.play();
@@ -135,6 +170,9 @@ class Character extends MovableObject {
     this.stopGameGeneral();
   }
 
+  /**
+   * Stops the game and resets endboss state after a delay.
+   */
   stopGameGeneral() {
     setTimeout(() => {
       stopAllIntervals();
@@ -142,12 +180,18 @@ class Character extends MovableObject {
     }, 700);
   }
 
+  /**
+   * Plays the hurt animation and sound, resets long idle state.
+   */
   hurtAnimation() {
     this.playAnimation(this.images_hurt);
     characterHurtSound.play();
     this.longIdleState = 0;
   }
 
+  /**
+   * Plays the jump animation if the character is jumping.
+   */
   jumpAnimation() {
     if (this.speedPosY > 0) {
       if (this.currentImage > 5) {
@@ -160,24 +204,41 @@ class Character extends MovableObject {
     this.longIdleState = 0;
   }
 
+  /**
+   * Checks if the character is currently walking.
+   * @returns {boolean}
+   */
   isWalking() {
     return this.world.keyboard.right || this.world.keyboard.left;
   }
 
+  /**
+   * Plays the walking animation and resets long idle state.
+   */
   walkingAnimation() {
     this.playAnimation(this.images_walking);
     this.longIdleState = 0;
   }
 
+  /**
+   * Checks if the character is standing (not idle for long).
+   * @returns {boolean}
+   */
   isStanding() {
     return this.longIdleState < 30;
   }
 
+  /**
+   * Plays the idle animation and increments the long idle state.
+   */
   idleAnimation() {
     this.playAnimation(this.images_idle);
     this.longIdleState++;
   }
 
+  /**
+   * Plays the long idle animation.
+   */
   longIdleAnimation() {
     this.playAnimation(this.images_long_idle);
   }

@@ -1,3 +1,14 @@
+/**
+ * Represents a status bar UI element for displaying health or other stats.
+ * Inherits from DrawableObject.
+ *
+ * @class
+ * @extends DrawableObject
+ * @property {string[]} statusbar_images - Array of image paths for different status bar states.
+ * @property {number} percentage - The current percentage value (e.g., health).
+ *
+ * @constructor
+ */
 class Statusbar extends DrawableObject {
   statusbar_images = [
     "./img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png",
@@ -9,6 +20,9 @@ class Statusbar extends DrawableObject {
   ];
   percentage = 100;
 
+  /**
+   * Creates a new Statusbar instance, loads images, and initializes the bar.
+   */
   constructor() {
     super();
     this.loadImages(this.statusbar_images);
@@ -19,6 +33,10 @@ class Statusbar extends DrawableObject {
     this.height = 50;
   }
 
+  /**
+   * Sets the percentage value and updates the status bar image.
+   * @param {number} percentage
+   */
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.statusbar_images[this.resolveImageIndexHealth()];

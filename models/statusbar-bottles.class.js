@@ -1,3 +1,14 @@
+/**
+ * Represents the bottle status bar UI element.
+ * Inherits from Statusbar and displays the number of collected bottles.
+ *
+ * @class
+ * @extends Statusbar
+ * @property {string[]} statusbar_images - Array of image paths for different bottle bar states.
+ * @property {number} collected - Number of bottles currently collected.
+ *
+ * @constructor
+ */
 class BottleBar extends Statusbar {
   statusbar_images = [
     "./img/7_statusbars/1_statusbar/3_statusbar_bottle/green/0.png",
@@ -9,6 +20,9 @@ class BottleBar extends Statusbar {
   ];
   collected = 0;
 
+  /**
+   * Creates a new BottleBar instance, loads images, and initializes the bar.
+   */
   constructor() {
     super();
     this.loadImages(this.statusbar_images);
@@ -19,6 +33,10 @@ class BottleBar extends Statusbar {
     this.height = 50;
   }
 
+  /**
+   * Sets the number of collected bottles and updates the status bar image.
+   * @param {number} collected
+   */
   setCollected(collected) {
     this.collected = collected;
     let path =

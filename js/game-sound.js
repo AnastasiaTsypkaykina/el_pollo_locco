@@ -1,3 +1,7 @@
+/**
+ * Handles all game sound effects and music.
+ * Provides functions to control sound playback and volume.
+ */
 characterJumpSound = new Audio("./audio/character_jump.mp3");
 characterDeadSound = new Audio("./audio/character_dead.mp3");
 characterHurtSound = new Audio("./audio/character_hurt.mp3");
@@ -38,6 +42,10 @@ backgroundSound.load();
 
 let gameMusicOff = false;
 
+/**
+ * Initializes and plays the background music.
+ * Resets sounds and checks if music should play.
+ */
 function gameSounds() {
   resetSoundsToBegin();
   checkGameMusic();
@@ -45,11 +53,17 @@ function gameSounds() {
   backgroundSound.play();
 }
 
+/**
+ * Resets the background and endboss music to the beginning.
+ */
 function resetSoundsToBegin() {
   backgroundSound.currentTime = 0;
   gameEndbossMusic.currentTime = 0;
 }
 
+/**
+ * Checks if the game music is off and sets all sound volumes accordingly.
+ */
 function checkGameMusic() {
   if (!gameMusicOff) {
     allSoundsVolumeOn();
@@ -58,17 +72,26 @@ function checkGameMusic() {
   }
 }
 
+/**
+ * Turns off all game sounds and updates the UI.
+ */
 function soundOff() {
   gameMusicOff = true;
   showSoundOffButton();
   allSoundsVolumeOff();
 }
 
+/**
+ * Shows the sound-off button and hides the sound-on button in the UI.
+ */
 function showSoundOffButton() {
   document.getElementById("sound-off").classList.add("d-none");
   document.getElementById("sound-on").classList.remove("d-none");
 }
 
+/**
+ * Sets the volume of all sounds to 0 (mute).
+ */
 function allSoundsVolumeOff() {
   characterDeadSound.volume = 0;
   characterHurtSound.volume = 0;
@@ -87,17 +110,26 @@ function allSoundsVolumeOff() {
   backgroundSound.volume = 0;
 }
 
+/**
+ * Turns on all game sounds and updates the UI.
+ */
 function soundOn() {
   gameMusicOff = false;
   showSoundOnButton();
   allSoundsVolumeOn();
 }
 
+/**
+ * Shows the sound-on button and hides the sound-off button in the UI.
+ */
 function showSoundOnButton() {
-    document.getElementById('sound-off').classList.remove('d-none');
-    document.getElementById('sound-on').classList.add('d-none');
+  document.getElementById("sound-off").classList.remove("d-none");
+  document.getElementById("sound-on").classList.add("d-none");
 }
 
+/**
+ * Sets the volume of all sounds to 1 (full volume).
+ */
 function allSoundsVolumeOn() {
   characterDeadSound.volume = 1;
   characterHurtSound.volume = 1;
@@ -116,22 +148,25 @@ function allSoundsVolumeOn() {
   backgroundSound.volume = 1;
 }
 
+/**
+ * It sets the value property of all sounds to 1 after a delay.
+ */
 function setGameSoundsToNull() {
   setTimeout(() => {
     characterDeadSound.value = 1;
-  characterHurtSound.value = 1;
-  characterJumpSound.value = 1;
-  chickenDeadSound.value = 1;
-  throwBottleSound.value = 1;
-  bottleSplashSound.value = 1;
-  collectCoinSound.value = 1;
-  endbossHurtSound.value = 1;
-  endbossAttentionSound.value = 1;
-  endbossAttackSound.value = 1;
-  gameEndbossMusic.value = 1;
-  gameWonSound.value = 1;
-  gameLostSound.value = 1;
-  collectBottleSound.value = 1;
-  backgroundSound.value = 1;
+    characterHurtSound.value = 1;
+    characterJumpSound.value = 1;
+    chickenDeadSound.value = 1;
+    throwBottleSound.value = 1;
+    bottleSplashSound.value = 1;
+    collectCoinSound.value = 1;
+    endbossHurtSound.value = 1;
+    endbossAttentionSound.value = 1;
+    endbossAttackSound.value = 1;
+    gameEndbossMusic.value = 1;
+    gameWonSound.value = 1;
+    gameLostSound.value = 1;
+    collectBottleSound.value = 1;
+    backgroundSound.value = 1;
   }, 300);
 }

@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Reset all
-   ========================================================================== */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,14 +5,12 @@
 }
 
 body {
-  /* Display & box model */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  /* Other */
   background-image: url("./img/5_background/first_half_background.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -24,15 +18,7 @@ body {
   font-family: "zabras", Arial, Helvetica, sans-serif;
 }
 
-/* ==========================================================================
-   Basic layout
-   ========================================================================== */
-
-/* Fullscreen
-   ========================================================================== */
-
 .fullscreen {
-  /* Display & box model */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,26 +29,19 @@ body {
   overflow: hidden;
 }
 
-/* Canvas / screens
-   ========================================================================== */
-
 canvas {
-  /* Display & box model */
   position: absolute;
   display: block;
-  /* Other */
   border: 2px solid #994409;
   border-radius: 8px;
 }
 
 .start-screen {
-  /* Display & box model */
   display: flex;
   justify-content: center;
   align-items: flex-start;
   width: 720px;
   height: 480px;
-  /* Other */
   background-image: url("./img/9_intro_outro_screens/start/startscreen_1.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -72,19 +51,16 @@ canvas {
 }
 
 .manual-screen {
-  /* Display & box model */
   z-index: 1;
   justify-content: flex-start !important;
   gap: 16px;
-  /* Other */
-  background-image: url("./img/9_intro_outro_screens/game_over/keys2.png");
+  background-image: url("./img/9_intro_outro_screens/game_over/keys_updated.png");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 6px;
 }
 
 .keys {
-  /* Display & box model */
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -92,7 +68,6 @@ canvas {
 }
 
 .overlay {
-  /* Display & box model */
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -107,7 +82,6 @@ canvas {
 .panel-control,
 .panel-close,
 .panel-manual {
-  /* Display & box model */
   display: flex;
   width: 100%;
   padding: 8px;
@@ -115,32 +89,24 @@ canvas {
 }
 
 .panel {
-  /* Display & box model */
   justify-content: center;
 }
 
 .panel-sound,
 .panel-close,
 .panel-manual {
-  /* Display & box model */
   justify-content: flex-end;
 }
 
 .panel-control {
-  /* Display & box model */
   justify-content: space-between;
 }
 
 .mobile-screen {
-  /* Display & box model */
   display: none;
 }
 
-/* Controls
-   ========================================================================== */
-
 .controls {
-  /* Display & box model */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -148,14 +114,12 @@ canvas {
   gap: 24px;
   padding: 16px;
   width: 720px;
-  /* Other */
   background-color: rgba(247, 192, 101, 0.6);
   border: 2px solid #994409;
   border-radius: 8px;
 }
 
 .control-container {
-  /* Display & box model */
   position: absolute;
   bottom: 30%;
   z-index: 1;
@@ -167,24 +131,19 @@ canvas {
 }
 
 .control {
-  /* Display & box model */
   display: flex;
   flex-direction: row;
   gap: 8px;
-  /* Other*/
   border-radius: 8px;
 }
 
 .btns {
-  /* Display & box model */
   display: flex;
   gap: 8px;
 }
 
 .btn {
-  /* Display & box model */
   padding: 8px 16px;
-  /* Other */
   background-color: rgba(247, 192, 101, 0.6);
   border: 2px solid #994409;
   border-radius: 8px;
@@ -193,12 +152,10 @@ canvas {
 }
 
 .mobile-btn {
-  /* Display & box model */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px;
-  /* Other */
   background-color: rgba(247, 192, 101, 0.6);
   border: 2px solid #994409;
   border-radius: 8px;
@@ -206,24 +163,26 @@ canvas {
   transition: all 0.1s ease-in-out;
 }
 
+.impressum {
+  text-decoration: none;
+  font-family: "zabras";
+  font-size: 24px;
+  color: #994409;
+}
+
 .btn:hover,
 .mobile-btn:hover {
-  /* Other */
   background-color: rgba(247, 192, 101);
 }
 
-/* Game won/lost
-   ========================================================================== */
 .won-screen,
 .lost-screen {
-  /* Display & box model */
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   position: relative;
   width: 720px;
   height: 480px;
-  /* Other */
   background-image: url("./img/9_intro_outro_screens/game_over/game over.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -236,21 +195,16 @@ canvas {
 }
 
 .lost-screen {
-  /* Other */
   background-image: url("./img/9_intro_outro_screens/game_over/you lost.png");
 }
 
-/* Styles
-   ========================================================================== */
 .box-shadow-6 {
-  /* Other */
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.12);
   box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.12);
   box-shadow: 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
 }
 
 .column-24px {
-  /* Display & box model */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -258,7 +212,6 @@ canvas {
 }
 
 .icon-description {
-  /* Display & box model */
   display: flex;
   flex-direction: row;
   gap: 24px;
@@ -266,56 +219,46 @@ canvas {
 }
 
 .d-none {
-  /* Other */
   display: none;
 }
 
 .icon-48x48 {
-  /* Display & box model */
   height: 48px;
   width: 48px;
 }
 
 .icon-24x24 {
-  /* Display & box model */
   height: 24px;
   width: 24px;
 }
 
 .padding-32px {
-  /* Display & box model */
   padding: 0 32px 32px 32px;
 }
 
 @media only screen and (min-width: 667px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
   .canvas {
-    /* Display & box model */
     height: 100%;
     width: 100%;
   }
 
   .overlay {
-    /* Display & box model */
     height: 100%;
-    width: 100%
-    
+    width: 100%;
   }
 
   .start-screen {
-    /* Display & box model */
     height: 100%;
     width: 100%;
   }
 
   .manual-screen {
-    /* Display & box model */
     height: 100%;
     width: 100%;
   }
 
   .won-screen,
   .lost-screen {
-    /* Display & box model */
     width: 100%;
     height: 100%;
   }
@@ -323,7 +266,6 @@ canvas {
 
 @media only screen and (max-width: 720px) and (orientation: portrait) {
   .fullscreen {
-    /* Display & box model */
     display: none;
   }
 
@@ -333,12 +275,10 @@ canvas {
   }
 
   .fullscreen {
-    /* Display & box model */
     display: none;
   }
 
   .mobile-screen {
-    /* Display & box model */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -347,18 +287,15 @@ canvas {
     gap: 16px;
     height: 100%;
     width: 100%;
-    /* Other */
     background-color: rgba(247, 192, 101, 0.6);
   }
 }
 
 @media only screen and (min-width: 1000px) and (orientation: landscape) {
-    .panel-control {
-        display: none;
-    } 
+  .panel-control {
+    display: none;
+  }
 }
-
-
 
 @media only screen and (min-width: 720px) and (orientation: portrait) {
   .panel-control {
@@ -369,12 +306,9 @@ canvas {
 @media only screen and (max-width: 480px) {
   .canvas {
     width: 100vh;
-    
   }
 }
 
-/* Fonts
-   ========================================================================== */
 h4 {
   font-family: "zabras";
   font-size: 36px;
