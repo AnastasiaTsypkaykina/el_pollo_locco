@@ -34,29 +34,17 @@ class MovableObject extends DrawableObject {
   /**
    * Applies gravity to bottles, updating vertical position and speed.
    */
-  applyGravityBottle() {
+  applyGravity() {
     setStoppableInterval(() => {
       if (this.isAboveGround() || this.speedPosY > 0) {
         this.posY -= this.speedPosY;
         this.speedPosY -= this.acceleration;
-      }
-    }, 1000 / 25);
-  }
-
-  /**
-   * Applies gravity to the character, updating vertical position and speed.
-   */
-  applyGravityCharacter() {
-    setStoppableInterval(() => {
-      if (this.isAboveGround() || this.speedPosY > 0) {
-        this.posY -= this.speedPosY;
-        this.speedPosY -= this.acceleration;
-      } else {
+      } else if (this instanceof Character) {
         this.posY = 120;
       }
     }, 1000 / 25);
   }
-
+  
   /**
    * Checks if the object is above ground.
    * @returns {boolean}

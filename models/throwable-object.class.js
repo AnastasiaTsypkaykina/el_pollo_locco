@@ -59,7 +59,7 @@ class ThrowableObject extends MovableObject {
    */
   throw() {
     this.speedY = 30;
-    this.applyGravityBottle();
+    this.applyGravity();
     this.throwingLeftOrRight();
   }
 

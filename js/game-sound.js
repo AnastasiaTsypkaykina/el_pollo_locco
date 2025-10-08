@@ -23,6 +23,7 @@ gameEndbossMusic = new Audio("./audio/endboss_attention_sound.mp3");
 
 gameWonSound = new Audio("./audio/game_won_fin.mp3");
 gameLostSound = new Audio("./audio/game_lost.mp3");
+walkingSound = new Audio("./audio/walking_on_sand.mp3");
 
 characterDeadSound.load();
 characterHurtSound.load();
@@ -39,6 +40,7 @@ gameWonSound.load();
 gameLostSound.load();
 collectBottleSound.load();
 backgroundSound.load();
+walkingSound.load();
 
 let gameMusicOff = false;
 
@@ -125,6 +127,7 @@ function allSoundsVolumeOff() {
   gameLostSound.volume = 0;
   collectBottleSound.volume = 0;
   backgroundSound.volume = 0;
+  walkingSound.volume = 0;
 }
 
 /**
@@ -164,6 +167,7 @@ function allSoundsVolumeOn() {
   gameLostSound.volume = 1;
   collectBottleSound.volume = 1;
   backgroundSound.volume = 1;
+  walkingSound.volume = 1;
 }
 
 /**
@@ -186,5 +190,6 @@ function setGameSoundsToNull() {
     gameLostSound.value = 1;
     collectBottleSound.value = 1;
     backgroundSound.value = 1;
+    walkingSound.value = 1;
   }, 300);
 }

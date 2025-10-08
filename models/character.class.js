@@ -20,8 +20,7 @@
  * @property {string[]} images_hurt - Array of image paths for hurt animation.
  * @property {string[]} images_idle - Array of image paths for idle animation.
  * @property {string[]} images_long_idle - Array of image paths for long idle animation.
- * @property {World} world - Reference to the game world.
- * @property {HTMLAudioElement} walkingSound - Sound effect for walking.
+ * @property {World} world - Reference to the game world. 
  *
  * @constructor
  */
@@ -102,7 +101,7 @@ class Character extends MovableObject {
   ];
 
   world;
-  walkingSound = new Audio("./audio/walking_on_sand.mp3");
+  
 
   /**
    * Creates a new Character instance, loads images, applies gravity, and starts animation.
@@ -115,14 +114,25 @@ class Character extends MovableObject {
     this.loadImages(this.images_hurt);
     this.loadImages(this.images_idle);
     this.loadImages(this.images_long_idle);
-    this.applyGravityCharacter();
+    this.applyGravity();
     this.animate();
   }
 
-  /**
+   /**
    * Starts the character's movement and animation intervals.
+   * Handles movement based on keyboard input and triggers the correct animation state.
    */
   animate() {
+    this.characterMovement();
+    this.animationIntervals();
+  }
+
+  /**
+   * Handles character movement based on keyboard input.
+   * Moves the character left or right, triggers jump, and updates camera position.
+   * Uses a stoppable interval for continuous movement.
+   */
+  characterMovement() {
     setStoppableInterval(() => {
       if (
         this.world &&
@@ -141,7 +151,14 @@ class Character extends MovableObject {
       }
       this.world.cameraPosX = -this.posX + 80;
     }, 1000 / 24);
+  }
 
+  /**
+   * Handles the character's animation state.
+   * Switches between death, hurt, jump, walking, idle, and long idle animations.
+   * Uses a stoppable interval for continuous animation updates.
+   */
+  animationIntervals() {
     setStoppableInterval(() => {
       if (this.isDead()) {
         this.deathAnimation();
@@ -217,6 +234,7 @@ class Character extends MovableObject {
    */
   walkingAnimation() {
     this.playAnimation(this.images_walking);
+    walkingSound.play();
     this.longIdleState = 0;
   }
 
