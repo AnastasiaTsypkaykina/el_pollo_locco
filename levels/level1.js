@@ -50,6 +50,12 @@ function initLevel() {
       new Coin(),
       new Coin(),
       new Coin(),
+      new Coin(),
+      new Coin(),
+      new Coin(),
+      new Coin(),
+      new Coin(),
+      new Coin()
     ],
 
     /** @type {Array<Bottle>} */
@@ -67,6 +73,8 @@ function initLevel() {
       new Bottle(),
       new Bottle(),
       new Bottle(),
+      new Bottle(),
+      new Bottle()
     ],
 
     /** @type {Array<BackgroundObject>} */

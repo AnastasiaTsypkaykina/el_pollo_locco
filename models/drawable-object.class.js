@@ -77,13 +77,13 @@ class DrawableObject {
   resolveImageIndexCollectableObjects() {
     if (this.collected == 0) {
       return 0;
-    } else if (this.collected == 1) {
+    } else if (this.collected >= 1 && this.collected < 4) {
       return 1;
-    } else if (this.collected == 2) {
+    } else if (this.collected >= 4 && this.collected < 7) {
       return 2;
-    } else if (this.collected == 3) {
+    } else if (this.collected >= 7 && this.collected < 10) {
       return 3;
-    } else if (this.collected == 4) {
+    } else if (this.collected >= 10 && this.collected < 15) {
       return 4;
     } else {
       return 5;
@@ -99,11 +99,11 @@ class DrawableObject {
       return 5;
     } else if (this.percentage > 80) {
       return 4;
-    } else if (this.percentage > 60) {
+    } else if (this.percentage > 50) {
       return 3;
-    } else if (this.percentage > 40) {
-      return 2;
     } else if (this.percentage > 20) {
+      return 2;
+    } else if (this.percentage > 8) {
       return 1;
     } else {
       return 0;

@@ -115,10 +115,10 @@ class MovableObject extends DrawableObject {
   }
 
   /**
-   * Reduces energy by 10 when hit by endboss and updates lastHit timestamp.
+   * Reduces energy by 35 when hit by endboss and updates lastHit timestamp.
    */
   hittedByEndboss() {
-    this.energy -= 10;
+    this.energy -= 35;
     if (this.energy < 0) {
       this.energy = 0;
     } else {
@@ -127,10 +127,10 @@ class MovableObject extends DrawableObject {
   }
 
   /**
-   * Reduces energy by 19 when hit by bottle and updates lastHit timestamp.
+   * Reduces energy by 30 when hit by bottle and updates lastHit timestamp.
    */
   hittedByBottle() {
-    this.energy -= 19;
+    this.energy -= 30;
     if (this.energy < 10) {
       this.energy = 0;
     } else {

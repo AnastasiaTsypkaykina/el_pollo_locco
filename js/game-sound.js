@@ -23,7 +23,7 @@ gameEndbossMusic = new Audio("./audio/endboss_attention_sound.mp3");
 
 gameWonSound = new Audio("./audio/game_won_fin.mp3");
 gameLostSound = new Audio("./audio/game_lost.mp3");
-walkingSound = new Audio("./audio/walking_on_sand.mp3");
+walkingSound = new Audio("./audio/character_walk.mp3");
 
 characterDeadSound.load();
 characterHurtSound.load();

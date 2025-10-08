@@ -39,8 +39,7 @@ class CoinBar extends Statusbar {
    */
   setCollected(collected) {
     this.collected = collected;
-    let path =
-      this.statusbar_images[this.resolveImageIndexCollectableObjects()];
+    let path = this.statusbar_images[this.resolveImageIndexCollectableObjects()];
     this.img = this.imageCache[path];
   }
 }
